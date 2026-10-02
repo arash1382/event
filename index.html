@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="executive">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>دبیرخانه مرکزی راهبری و برگزاری رویدادهای ایران‌مال</title>
+<meta name="description" content="سامانه مرجع ثبت، ارزیابی، تصویب، اجرا و پایش تمامی رویدادهای ایران‌مال — ۱۴ گیت کنترلی راهبری، تقویم رویدادها، مجوزها، HSE، حراست و تحلیل پس از رویداد.">
+<meta name="theme-color" content="#23408D">
+<meta name="author" content="دبیرخانه مرکزی رویدادهای ایران‌مال">
+
+<link rel="icon" href="assets/img/favicon-64.png" sizes="64x64" type="image/png">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+<!-- =====================================================================
+     BRAND ASSETS — taken verbatim from this repository, never substituted.
+
+     Typeface : IRANYekanX v4.0 — all eight real woff2 weights that ship in
+                the repository root are declared in assets/css/tokens.css.
+     Logo     : Iran-Mall-Logo-1030x1030.webp (official, 1030×1030, alpha).
+                assets/img/* are lossless crops of that exact file:
+                  iran-mall-logo.webp  578×638  full lockup
+                  iran-mall-mark.webp  570×473  emblem, cropped at +232+196
+                  favicon/apple icons   same emblem, squared
+     Palette  : sampled from the official logo pixels —
+                  Iran Mall Blue  #23408D   (35,64,141)
+                  Iran Mall Gold  #D7A866   (215,168,102)
+     ===================================================================== -->
+
+<!-- ===== IRANYekanX v4.0 — family supplied in repository root, 8 real weights ===== -->
+<link rel="preload" href="IRANYekanX-Light.woff2"   as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="IRANYekanX-Medium.woff2"  as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="IRANYekanX-DemiBold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="IRANYekanX-Bold.woff2"    as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="IRANYekanX-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/views.css">
+<link rel="stylesheet" href="assets/css/print.css">
+</head>
+
+<body>
+<a class="skip-link" href="#view">پرش به محتوای اصلی</a>
+
+<!-- Animated boot curtain: prevents any FOUT with a fallback face -->
+<div id="boot" aria-hidden="true"><span class="boot-lattice"></span><span class="boot-bar"><i></i></span></div>
+
+<div class="app" id="app">
+
+  <!-- ══════════════════════ RAIL (RTL start = right) ══════════════════════ -->
+  <aside class="rail" id="rail" aria-label="ناوبری اصلی">
+    <div class="rail__brand">
+      <a class="brandpl" href="#/dashboard" aria-label="ایران‌مال — دبیرخانه مرکزی رویدادها">
+        <img src="assets/img/iran-mall-logo.webp" alt="نشان رسمی ایران‌مال" class="brandpl__logo" width="578" height="638">
+      </a>
+      <div class="rail__brandtext">
+        <span class="rail__brandline">دبیرخانه مرکزی رویدادها</span>
+        <span class="rail__brandsub">Event Governance Secretariat</span>
+      </div>
+      <button class="rail__collapse" id="railToggle" type="button" aria-label="جمع/باز کردن ناوبری" aria-expanded="true" title="جمع/باز کردن ناوبری">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h16"/></svg>
+      </button>
+    </div>
+
+    <nav class="rail__nav" id="railNav"><!-- rendered by app.js --></nav>
+
+    <div class="rail__foot">
+      <div class="railseat">
+        <img src="assets/img/iran-mall-mark.webp" alt="" class="railseat__mark" width="570" height="473" aria-hidden="true">
+        <div class="railseat__t">
+          <b>مرجع واحد رویداد</b>
+          <span>هیچ رویدادی بدون Event ID اجرا نمی‌شود</span>
+        </div>
+      </div>
+      <div class="railkpi">
+        <div><span class="railkpi__k">دوره راهبری</span><span class="railkpi__v" id="railPeriod">—</span></div>
+        <div><span class="railkpi__k">نسخه سند</span><span class="railkpi__v">۲٫۴</span></div>
+      </div>
+    </div>
+  </aside>
+  <div class="rail-scrim" id="railScrim" hidden></div>
+
+  <!-- ══════════════════════ MAIN ══════════════════════ -->
+  <div class="main">
+
+    <header class="topbar">
+      <button class="iconbtn topbar__burger" id="burger" type="button" aria-label="ناوبری">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <div class="topbar__crumb" id="crumb" aria-live="polite">
+        <span class="crumb__home">دبیرخانه مرکزی رویدادها</span>
+        <span class="crumb__sep" aria-hidden="true">/</span>
+        <span class="crumb__cur">داشبورد اجرایی</span>
+      </div>
+
+      <button class="searchbtn" id="searchBtn" type="button" aria-label="جست‌وجو در سامانه">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+        <span class="searchbtn__ph">جست‌وجوی رویداد، گیت، مجوز…</span>
+        <kbd class="searchbtn__kbd">Ctrl K</kbd>
+      </button>
+
+      <div class="topbar__spacer"></div>
+
+      <div class="chip chip--live" title="وضعیت اتصال مرکز فرمان">
+        <i class="dot dot--pulse" aria-hidden="true"></i><span>پایش زنده</span>
+      </div>
+
+      <div class="todaycal" id="todayCal" title="امروز">
+        <span class="todaycal__d">—</span><span class="todaycal__m">—</span>
+      </div>
+
+      <button class="iconbtn" id="presentBtn" type="button" aria-pressed="false" title="حالت ارائه به هیئت‌مدیره" aria-label="حالت ارائه">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18v11H3zM8 20h8M12 15v5"/></svg>
+      </button>
+
+      <button class="iconbtn" id="printBtn" type="button" title="خروجی چاپی / PDF" aria-label="چاپ">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 9V3h10v6M7 19H5a2 2 0 01-2-2v-4a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2h-2M7 15h10v6H7z"/></svg>
+      </button>
+
+      <div class="whoami" title="دبیر شورای مرکزی رویدادها">
+        <span class="whoami__av" aria-hidden="true">دش</span>
+        <span class="whoami__t"><b>دبیر شورای مرکزی</b><i>سطح دسترسی: راهبری</i></span>
+      </div>
+    </header>
+
+    <main class="view" id="view" tabindex="-1">
+      <noscript><div class="panel panel--warn">برای مشاهده این سامانه لازم است JavaScript فعال باشد.</div></noscript>
+    </main>
+
+    <footer class="foot">
+      <div class="foot__brand">
+        <img src="assets/img/iran-mall-mark.webp" alt="" aria-hidden="true" width="570" height="473">
+        <div>
+          <b>دبیرخانه مرکزی راهبری و برگزاری رویدادهای ایران‌مال</b>
+          <span>مرجع واحد ثبت، ارزیابی، تصویب، اجرا و پایش رویدادها</span>
+        </div>
+      </div>
+      <div class="foot__meta">
+        <span>سند راهبری رویداد — نسخه ۲٫۴</span>
+        <span>·</span>
+        <span>محرمانه / ویژه هیئت‌مدیره</span>
+        <span>·</span>
+        <span id="footStamp">—</span>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- ══════════════════════ Command palette ══════════════════════ -->
+<div class="cmdk" id="cmdk" hidden>
+  <div class="cmdk__scrim" data-cmdk-close></div>
+  <div class="cmdk__box" role="dialog" aria-modal="true" aria-label="جست‌وجوی سریع">
+    <div class="cmdk__head">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg>
+      <input id="cmdkInput" type="text" placeholder="رویداد، گیت، مجوز، واحد یا بخش را جست‌وجو کنید…" autocomplete="off" spellcheck="false">
+      <kbd>Esc</kbd>
+    </div>
+    <div class="cmdk__list" id="cmdkList" role="listbox"></div>
+    <div class="cmdk__foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> حرکت</span>
+      <span><kbd>↵</kbd> انتخاب</span>
+      <span>۲۲ گیت / ۱۲ پرونده / ۳۶ مجوز ایندکس‌شده</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ Drawer (gate / event detail) ══════════════════════ -->
+<div class="drawer" id="drawer" hidden>
+  <div class="drawer__scrim" data-drawer-close></div>
+  <section class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+    <header class="drawer__head">
+      <div>
+        <span class="drawer__eyebrow" id="drawerEyebrow">—</span>
+        <h2 class="drawer__title" id="drawerTitle">—</h2>
+      </div>
+      <button class="iconbtn" type="button" data-drawer-close aria-label="بستن">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </header>
+    <div class="drawer__body" id="drawerBody"></div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<div class="printhead" id="printHead" aria-hidden="true"></div>
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
